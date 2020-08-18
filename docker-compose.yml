@@ -4,9 +4,7 @@ services:
   # On Windows, run with COMPOSE_CONVERT_WINDOWS_PATHS=1
 
   chrome:
-    build:
-      context: ./
-      dockerfile: Dockerfile-selenium
+    image: selenium/node-chrome:3.141.59-zirconium
     depends_on:
     - selenium-hub
     - web

@@ -1,17 +1,16 @@
+import { join } from 'path';
+
+const browserName = 'chrome-docker';
+
 const imageSnapshotOptions = {
   customDiffConfig: {
     threshold: 0.14
-  }
+  },
+  customSnapshotsDir: join(__dirname, '../../../__tests__/__image_snapshots__/', browserName)
 };
 
 const timeouts = {
-  directLine: 15000,
-  fetch: 2500,
-  fetchImage: 5000,
-  navigation: 10000,
-  postActivity: 30000,
-  scrollToBottom: 2000,
-  ui: 1000
+  test: 10000
 };
 
-export { imageSnapshotOptions, timeouts };
+module.exports = { browserName, imageSnapshotOptions, timeouts };

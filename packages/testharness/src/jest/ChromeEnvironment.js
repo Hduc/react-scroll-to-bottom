@@ -2,9 +2,7 @@ const { relative } = require('path');
 const AbortController = require('abort-controller');
 const NodeEnvironment = require('jest-environment-node');
 
-const { browserName } = require('../../constants.json');
-const hostServe = require('./hostServe');
-const serveJSON = require('../serve.json');
+const { browserName } = require('../constants');
 
 class ChromeEnvironment extends NodeEnvironment {
   constructor(config, context) {
@@ -21,15 +19,6 @@ class ChromeEnvironment extends NodeEnvironment {
     const { signal } = this.abortController;
 
     this.global.abortSignal = signal;
-
-    if (this.global.docker) {
-      const { port } = await hostServe(signal, {
-        ...serveJSON,
-        public: '.'
-      });
-
-      this.global.webServerPort = port;
-    }
   }
 
   async teardown() {

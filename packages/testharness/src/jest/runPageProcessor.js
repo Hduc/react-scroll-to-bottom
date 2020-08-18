@@ -4,26 +4,26 @@ import { tmpdir } from 'os';
 import createDeferred from 'p-defer';
 import fs from 'fs';
 
-import { imageSnapshotOptions } from '../constants.json';
+import { imageSnapshotOptions } from '../constants';
 import createJobObservable from './createJobObservable';
 
 const customImageSnapshotOptions = {
   ...imageSnapshotOptions,
-  customSnapshotsDir: join(__dirname, '../__image_snapshots__/html')
+  customSnapshotsDir: join(__dirname, '../__image_snapshots__')
 };
 
 const writeFile = promisify(fs.writeFile);
 
 export default async function runPageProcessor(driver, { ignoreConsoleError = false, ignorePageError = false } = {}) {
-  const testHarnessLoaded = await driver.executeScript(() => !!window.__test__);
-
-  if (!testHarnessLoaded) {
+  if (await driver.executeScript(() => !window.__test__)) {
     throw new Error('Test harness is not loaded on the page.');
   }
 
-  if (await driver.executeScript(() => !(window.React && window.ReactDOM && window.ReactTestUtils))) {
+  // if (await driver.executeScript(() => !(window.React && window.ReactDOM && window.ReactTestUtils))) {
+  if (await driver.executeScript(() => !(window.React && window.ReactDOM))) {
     throw new Error(
-      '"react", "react-dom", and "react-test-utils" is required to use page objects and must be loaded on the page.'
+      // '"react", "react-dom", and "react-test-utils" is required to use page objects and must be loaded on the page.'
+      '"react" and "react-dom" is required to loaded on the page.'
     );
   }
 

@@ -45,7 +45,7 @@ global.runHTMLTest = async (
     // But when we use #wd=1, it kept.
     await driver.get(
       global.docker
-        ? new URL(hash, new URL(url, 'http://webserver/'))
+        ? new URL(hash, new URL(url, 'http://web/'))
         : new URL(url, `http://localhost:${global.webServerPort}/`)
     );
 

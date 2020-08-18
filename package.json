@@ -7,10 +7,10 @@
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build --stream",
     "eslint": "lerna run eslint --parallel",
-    "start": "lerna run start --parallel --scope=react-scroll-to-bottom --stream",
-    "start:docker": "docker-compose up --build --detach --scale chrome=4",
+    "start": "lerna run start --parallel --scope=react-scroll-to-bottom --scope=testharness --stream",
+    "start:docker": "docker-compose up --build --scale chrome=1",
     "stop:docker": "docker-compose down",
-    "test": "lerna run test --stream"
+    "test": "jest --maxWorkers=1"
   },
   "devDependencies": {
     "jest": "^26.0.1",

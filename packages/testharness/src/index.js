@@ -4,8 +4,8 @@ import 'regenerator-runtime';
 import expect from 'expect';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactDOMTestUtils from 'react-dom/test-utils';
-import ReactScrollToBottom from 'react-scroll-to-bottom';
+// import ReactDOMTestUtils from 'react-dom/test-utils';
+// import ReactScrollToBottom from 'react-scroll-to-bottom';
 
 import { timeouts } from './constants';
 import * as conditions from './conditions/index';
@@ -21,8 +21,8 @@ import subscribeConsole, { getHistory as getConsoleHistory } from './utils/subsc
 
 window.React = React;
 window.ReactDOM = ReactDOM;
-window.ReactDOMTestUtils = ReactDOMTestUtils;
-window.ReactScrollToBottom = ReactScrollToBottom;
+// window.ReactDOMTestUtils = ReactDOMTestUtils;
+// window.ReactScrollToBottom = ReactScrollToBottom;
 
 const log = console.log.bind(console);
 

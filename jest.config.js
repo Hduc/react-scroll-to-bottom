@@ -1,6 +1,6 @@
 module.exports = {
   collectCoverageFrom: [
-    '<rootDir>/packages/*/src/**/*.js',
+    '<rootDir>/packages/component/src/**/*.js',
     '!<rootDir>/*.{spec,test}.js',
     '!<rootDir>/node_modules/**'
   ],
@@ -10,8 +10,8 @@ module.exports = {
   },
   moduleDirectories: ['node_modules', 'packages'],
   setupFilesAfterEnv: ['<rootDir>/packages/testharness/lib/jest/setupJest.js'],
-  testPathIgnorePatterns: ['<rootDir>/packages/testharness'],
-  transform: {
-    '\\.js$': './babel-jest-config.js'
-  }
+  testPathIgnorePatterns: ['<rootDir>/packages/playground', '<rootDir>/packages/testharness']
+  // transform: {
+  //   '\\.js$': './babel-jest-config.js'
+  // }
 };
